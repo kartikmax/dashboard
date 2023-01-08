@@ -5,30 +5,23 @@ const Print = () => {
 };
 
 const Todo = () => {
-  const [num, setNum] = useState(0);
-//   const [textList, setTextList] = useState();
+  const [textList, setTextList] = useState();
   const [myArray, setMyArray] = useState([]);
-  console.log(myArray);
+  
+  const handleChange = (e) => {
+    setTextList(e.target.value);
+  };
+  const handleCaptureText = () => {
+    setMyArray([...myArray, textList]);
+  };
+
   return (
     <div>
-      {/* <input
-        type="text"
-        value={textList}
-        onChange={(e) => {
-          setTextList(e.target.value);
-        }}
-      /> */}
-      <button
-        onClick={() => {
-          setNum((x) => x + 1);
-          setMyArray([...myArray, num]);
-        }}
-      >
-        click me{" "}
-      </button>
+      <input type="text" value={textList} onChange={handleChange} />
+      <button onClick={handleCaptureText}>submit</button>
       <ul>
-        {myArray.map((x, y) => (
-          <li key={x}>{y}</li>
+        {myArray.map((x) => (
+          <li>{x}</li>
         ))}
       </ul>
     </div>
