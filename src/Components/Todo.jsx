@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import RandomGrid from "./RandomGrid";
 
 const Print = ({ text }) => {
   return <div>{text}</div>;
@@ -23,7 +24,9 @@ const Todo = () => {
   console.log(myArray);
 
   return (
-    <div>
+    <>
+      <RandomGrid/>
+      <div>
       <input type="color" value={textList} onChange={handleChange} />
       <button onClick={handleCaptureText}>submit</button>
       <button
@@ -38,7 +41,8 @@ const Todo = () => {
           <Tile color={x} />
         ))}
       </ol>
-    </div>
+      </div> 
+    </>
   );
 };
 
