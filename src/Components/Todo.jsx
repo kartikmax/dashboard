@@ -1,3 +1,5 @@
+import { Grid } from "@mui/material";
+import { Box } from "@mui/system";
 import React, { useState } from "react";
 import RandomGrid from "./RandomGrid";
 
@@ -7,7 +9,7 @@ const Print = ({ text }) => {
 
 const Tile = ({ color }) => {
   return (
-    <div style={{ height: "30px", width: "30px", background: `${color}` }} />
+    <Grid item xs={4} style={{ height: "30px", width: "30px", background: `${color}`,padding:"10px" }} />
   );
 };
 
@@ -36,11 +38,14 @@ const Todo = () => {
       >
         clear
       </button>
-      <ol>
+      <br/>
+      <Box style={{width:"400px",margin:"30px"}}>
+      <Grid container spacing={1}>
         {myArray.map((x) => (
           <Tile color={x} />
         ))}
-      </ol>
+      </Grid>
+      </Box>
       </div> 
     </>
   );
