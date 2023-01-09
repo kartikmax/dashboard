@@ -1,29 +1,43 @@
 import React, { useState } from "react";
 
-const Print = () => {
-  return <li>print component</li>;
+const Print = ({ text }) => {
+  return <div>{text}</div>;
+};
+
+const Tile = ({ color }) => {
+  return (
+    <div style={{ height: "30px", width: "30px", background: `${color}` }} />
+  );
 };
 
 const Todo = () => {
   const [textList, setTextList] = useState();
   const [myArray, setMyArray] = useState([]);
-  
+
   const handleChange = (e) => {
     setTextList(e.target.value);
   };
   const handleCaptureText = () => {
     setMyArray([...myArray, textList]);
   };
+  console.log(myArray);
 
   return (
     <div>
-      <input type="text" value={textList} onChange={handleChange} />
+      <input type="color" value={textList} onChange={handleChange} />
       <button onClick={handleCaptureText}>submit</button>
-      <ul>
+      <button
+        onClick={() => {
+          setTextList("");
+        }}
+      >
+        clear
+      </button>
+      <ol>
         {myArray.map((x) => (
-          <li>{x}</li>
+          <Tile color={x} />
         ))}
-      </ul>
+      </ol>
     </div>
   );
 };
